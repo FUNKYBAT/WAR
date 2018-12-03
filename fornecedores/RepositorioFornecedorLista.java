@@ -1,12 +1,10 @@
 package fornecedores;
 
 public class RepositorioFornecedorLista implements RepositorioFornecedorInterface {
-    private Fornecedor fornecedor;
-    private RepositorioFornecedorLista proximo;
+    Fornecedor fornecedor;
+    RepositorioFornecedorLista proximo;
 
-    RepositorioFornecedorLista() {
-        this.fornecedor = null;
-        this.proximo = null;
+    public RepositorioFornecedorLista() {
     }
 
     @Override
