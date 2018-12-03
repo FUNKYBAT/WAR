@@ -2,10 +2,11 @@ package fachada;
 
 import compras.*;
 import fornecedores.*;
-import produtos.produto.*;
 import servicos.*;
 import usuarios.admins.*;
 import usuarios.comuns.*;
+import produtos.produto.*;
+import produtos.arma.*;
 
 
 public class Fachada {
@@ -14,6 +15,8 @@ public class Fachada {
     private CadastroFornecedor fornecedor;
     private CadastroServico servico;
     private CadastroCompras compras;
+    private CadastroProduto produto;
+    private CadastroArma arma;
 
     public Fachada(boolean tipo) {
         usuario = new CadastroUsuario(tipo);
@@ -177,5 +180,79 @@ public class Fachada {
 
     public int calcularFrete(int cep) {
         return this.compras.calcularFrete(cep);
+    }
+    
+    public void AtualizarQuantidadeP (String nome, int quantidade) throws ProdutoNaoExisteException {
+        this.lista.AtualizarQuantidadeProduto(nome, quantidade);
+    }
+
+    public void AtualizarDescricaoP (String nome, String novaDescricao) throws ProdutoNaoExisteException {
+        this.lista.atualizaDescricaoProduto(nome, novaDescricao);
+    }
+    
+    public void AtualizarEstrelasP(String nome, double novaAvaliacao) throws ProdutoNaoExisteException {
+        this.lista.AtualizarEstrelasProduto(nome, novaAvaliacao);
+    }
+
+    public void AtualizarPrecoP(String nome, double novoPreco) throws ProdutoNaoExisteException {
+        this.lista.AtualizarPrecoProduto(nome,novoPreco);
+    }
+
+    public boolean existeP (String nome) {
+        return this.lista.existeProduto(nome);
+    }
+    public Produto procurarP (String nome) throws ProdutoNaoExisteException {
+        return this.lista.procurarProduto(nome);
+    }
+    public void removerP(String nome) throws ProdutoNaoExisteException {
+        this.lista.removerProduto(nome);
+    }
+    public void cadastrarP(Produto produto) throws  ProdutoJaExisteException, ProdutoLimiteAtingidoException{
+        this.lista.cadastrarProduto(produto);
+    }
+    
+    public void cadastrarA(Arma arma) throws ArmaJaExisteException,  LimiteAtingidoException{
+        this.lista.cadastrarArma(arma);
+    }
+
+    public void removerA(String nome) throws ArmaNaoExisteException {
+        this.lista.removerArma(nome);
+    }
+
+
+    public Arma procurarA (String nome) throws ArmaNaoExisteException {
+        return this.lista.procurarArma(nome);
+    }
+
+    public boolean existeA (String nome) {
+        return this.lista.existeArma(nome);
+    }
+
+    public void AtualizarPrecoA(String nome, double novoPreco) throws ArmaNaoExisteException {
+        this.lista.AtualizarPrecoArma(nome,novoPreco);
+    }
+
+    public void AtualizarEstrelasA(String nome, double novaAvaliacao) throws ArmaNaoExisteException {
+        this.lista.AtualizarEstrelasArma(nome, novaAvaliacao);
+    }
+
+    public void atualizaDescricaoA (String nome, String novaDescricao) throws ArmaNaoExisteException {
+        this.lista.atualizaDescricaoArma(nome, novaDescricao);
+    }
+
+    public void AtualizarQuantidadeA(String nome, int quantidade) throws ArmaNaoExisteException {
+        this.lista.AtualizarQuantidadeArma(nome, quantidade);
+    }
+
+    public void ProcurarCategoriaA(String categoria,int  x) throws CategoriaNaoExisteException {
+        this.lista.ProcurarCategoriaArma(categoria, x);
+    }
+
+    public void ProcurarCalibreA(String calibre,int  x) throws CategoriaNaoExisteException {
+        this.lista.ProcurarCalibreArma(calibre, x);
+    }
+    
+    public void ProcurarMunicaoA(String municao,int  x) throws CategoriaNaoExisteException {
+        this.lista.ProcurarMunicaoArma(municao, x);
     }
 }
