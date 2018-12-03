@@ -6,12 +6,13 @@ import produto.Produto;
 
 public class RepositorioComprasLista implements RepositorioComprasInterface {
 	private Produto produto;
-	private int qtdProduto;
+	private int qtdProduto; // Armazenar qtd do produto por loop
 	private RepositorioComprasLista proximo;
 
 	public RepositorioComprasLista() {
 	}
 
+	// Adicionar Item no Carrinho
 	@Override
 	public void adicionarItem(Produto produto) {
 		if (this.produto.getNome() == null) {
@@ -23,6 +24,7 @@ public class RepositorioComprasLista implements RepositorioComprasInterface {
 
 	}
 
+	// Remover Item do Carrinho
 	@Override
 	public void removerItem(String nome) throws ItemNaoEstaNoCarrinhoException {
 		if (this.produto != null) {
@@ -37,6 +39,7 @@ public class RepositorioComprasLista implements RepositorioComprasInterface {
 		}
 	}
 
+	// Procurar Item no Carrinho
 	@Override
 	public Produto procurarItem(String nome) throws ItemNaoEstaNoCarrinhoException {
 		Produto p = null;
@@ -53,6 +56,7 @@ public class RepositorioComprasLista implements RepositorioComprasInterface {
 		}
 	}
 
+	// Verificar se item existe no carrinho
 	@Override
 	public boolean existe(String nome) {
 		if (this.produto != null) {
@@ -66,19 +70,20 @@ public class RepositorioComprasLista implements RepositorioComprasInterface {
 		}
 	}
 
+	// Adicionar cupom de Desconto
 	@Override
 	public int inserirCupom(int codCupom) {
 		Random geradorDesconto = new Random();
-		
-		// TODO Auto-generated method stub
-		return codCupom;
+		int valorDesconto = geradorDesconto.nextInt(5);
+		return valorDesconto;
 	}
 
+	// Calcular Frete de envio
 	@Override
 	public int calcularFrete(int cep) {
 		Random geradorFrete = new Random();
 		int valor = geradorFrete.nextInt(20);
 		return valor;
 	}
-	
+
 }

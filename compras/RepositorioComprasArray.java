@@ -63,11 +63,12 @@ public class RepositorioComprasArray implements RepositorioComprasInterface {
 		return false;
 	}
 
-	// Adicionar algum cupom de Desconto
+	// Adicionar cupom de Desconto
 	@Override
 	public int inserirCupom(int codCupom) {
-		return codCupom;
-
+		Random geradorDesconto = new Random();
+		int valorDesconto = geradorDesconto.nextInt(5);
+		return valorDesconto;
 	}
 
 	// Calcular Frete de envio
